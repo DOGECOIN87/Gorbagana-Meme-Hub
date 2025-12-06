@@ -101,6 +101,12 @@
       "description": "Trashbin logo",
       "imageUrl": "https://storage.googleapis.com/aai-web-samples/trashbin.png",
       "imageHint": "trash can"
+    },
+    {
+      "id": "user-16",
+      "description": "GORID logo",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/gorid.png",
+      "imageHint": "fingerprint logo"
     }
   ]
 }

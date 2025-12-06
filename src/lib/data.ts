@@ -247,4 +247,18 @@ export const initialProfiles: Profile[] = [
     isRecruiter: false,
     isEditable: false,
   },
+  {
+    id: 'user-16',
+    name: 'GORID',
+    age: 1,
+    bio: '.gor wallet name addresses powered by the Gorbagana blockchain.',
+    image: getImage('user-16').url,
+    dataAiHint: getImage('user-16').hint,
+    stats: [
+      { label: 'Service', value: 'Wallet Names' },
+      { label: 'Chain', value: 'Gorbagana' },
+    ],
+    isRecruiter: false,
+    isEditable: false,
+  },
 ];
