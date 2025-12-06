@@ -151,6 +151,28 @@ export default function ProfilePage() {
               </Card>
             )}
 
+            {currentProfile.id === 'user-15' && (
+              <Card className="mt-8">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <LinkIcon /> Links
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-col gap-2">
+                  <Button asChild className="w-full">
+                    <Link href="https://trashbin.fun" target="_blank">
+                      Website <ExternalLink className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Button asChild className="w-full" variant="secondary">
+                    <Link href="https://x.com/TrashBinGOR" target="_blank">
+                      X.com Profile <ExternalLink className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            )}
+
             {currentProfile.id === 'user-08' && (
               <Card className="mt-8">
                 <CardHeader>

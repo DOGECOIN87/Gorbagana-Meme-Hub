@@ -232,4 +232,19 @@ export const initialProfiles: Profile[] = [
     isRecruiter: false,
     isEditable: false,
   },
+  {
+    id: 'user-15',
+    name: 'Trashbin',
+    age: 1,
+    bio: 'Decentralized exchange built on Gorbagana with fee revenue.',
+    image: getImage('user-15').url,
+    dataAiHint: getImage('user-15').hint,
+    stats: [
+      { label: 'Platform', value: 'DEX' },
+      { label: 'Chain', value: 'Gorbagana' },
+      { label: 'Fee Revenue', value: 'Enabled' },
+    ],
+    isRecruiter: false,
+    isEditable: false,
+  },
 ];

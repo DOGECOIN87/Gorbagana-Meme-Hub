@@ -95,6 +95,12 @@
       "description": "Trashcoin logo",
       "imageUrl": "https://storage.googleapis.com/aai-web-samples/trashcoin.png",
       "imageHint": "gold coin"
+    },
+    {
+      "id": "user-15",
+      "description": "Trashbin logo",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/trashbin.png",
+      "imageHint": "trash can"
     }
   ]
 }
