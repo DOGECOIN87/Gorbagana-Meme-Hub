@@ -94,6 +94,21 @@ export default function ProfilePage() {
                 </CardContent>
             </Card>
 
+            {currentProfile.id === 'user-01' && (
+                <Card className="mt-8">
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2"><LinkIcon /> Community</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Button asChild className="w-full">
+                    <Link href="https://Gorbagana.wtf" target="_blank">
+                        Gorbagana Website <ExternalLink className="ml-2 h-4 w-4" />
+                    </Link>
+                    </Button>
+                </CardContent>
+                </Card>
+            )}
+
             {currentProfile.id === 'user-08' && (
               <Card className="mt-8">
                 <CardHeader>

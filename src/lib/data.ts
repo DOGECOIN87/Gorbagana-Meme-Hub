@@ -28,18 +28,19 @@ export const initialProfiles: Profile[] = [
   },
   {
     id: 'user-01',
-    name: 'Oscar',
+    name: 'Oscar the grouch',
     age: 52,
-    bio: 'Looking for someone to share my trash can with. Must love garbage and complaining. Bonus points if you hate everything.',
+    bio: 'Main mascot for the Gorbagana community. Lives in a trash can not because he\'s poor because he avoiding paying taxes.',
     image: getImage('user-01').url,
     dataAiHint: getImage('user-01').hint,
     stats: [
       { label: 'Canthal Tilt', value: 'Negative' },
       { label: 'Grumble/min', value: 12 },
-      { label: 'Trash Cans Owned', value: 1 },
+      { label: 'Tax Evasion', value: 'Active' },
       { label: 'Friends', value: '1 (Slimey)'}
     ],
     isRecruiter: false,
+    isEditable: false,
   },
   {
     id: 'user-02',
