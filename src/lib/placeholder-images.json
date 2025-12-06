@@ -59,6 +59,12 @@
       "description": "GORLOCK the destroyer of worlds",
       "imageUrl": "https://storage.googleapis.com/aai-web-samples/gorlock.jpg",
       "imageHint": "person posing"
+    },
+    {
+      "id": "user-09",
+      "description": "Caroline Ellison",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/caroline_ellison.jpg",
+      "imageHint": "woman glasses"
     }
   ]
 }

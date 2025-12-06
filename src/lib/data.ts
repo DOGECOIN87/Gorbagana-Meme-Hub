@@ -30,7 +30,7 @@ export const initialProfiles: Profile[] = [
     id: 'user-01',
     name: 'Oscar the grouch',
     age: 52,
-    bio: 'Main mascot for the Gorbagana community. Lives in a trash can not because he\'s poor because he avoiding paying taxes.',
+    bio: "Main mascot for the Gorbagana community. Lives in a trash can not because he's poor because he avoiding paying taxes.",
     image: getImage('user-01').url,
     dataAiHint: getImage('user-01').hint,
     stats: [
@@ -38,6 +38,21 @@ export const initialProfiles: Profile[] = [
       { label: 'Grumble/min', value: 12 },
       { label: 'Tax Evasion', value: 'Active' },
       { label: 'Friends', value: '1 (Slimey)'}
+    ],
+    isRecruiter: false,
+    isEditable: false,
+  },
+  {
+    id: 'user-09',
+    name: 'Caroline Ellison',
+    age: 29,
+    bio: "Former lover of FTX's Sam Bankman-Fried. Rumor has it that the Gorbagana CEO @Lex_Node is in love with her and is a common inside joke among the community.",
+    image: getImage('user-09').url,
+    dataAiHint: getImage('user-09').hint,
+    stats: [
+      { label: 'Effective Altruism', value: 'Questionable' },
+      { label: 'Risk Management', value: 'It\'s a spectrum' },
+      { label: 'Polycule Size', value: '10' },
     ],
     isRecruiter: false,
     isEditable: false,

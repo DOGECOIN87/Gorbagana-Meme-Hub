@@ -94,15 +94,19 @@ export default function ProfilePage() {
                 </CardContent>
             </Card>
 
-            {currentProfile.id === 'user-01' && (
+            {(currentProfile.id === 'user-01' || currentProfile.id === 'user-09') && (
                 <Card className="mt-8">
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2"><LinkIcon /> Community</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <Button asChild className="w-full">
-                    <Link href="https://Gorbagana.wtf" target="_blank">
-                        Gorbagana Website <ExternalLink className="ml-2 h-4 w-4" />
+                    <Link href={
+                        currentProfile.id === 'user-01' ? "https://Gorbagana.wtf" :
+                        "https://www.google.com/search?q=CarolineEllison"
+                    } target="_blank">
+                        {currentProfile.id === 'user-01' ? 'Gorbagana Website' : 'Learn More'}
+                        <ExternalLink className="ml-2 h-4 w-4" />
                     </Link>
                     </Button>
                 </CardContent>
