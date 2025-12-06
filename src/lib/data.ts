@@ -27,6 +27,21 @@ export const initialProfiles: Profile[] = [
     isEditable: true,
   },
   {
+    id: 'user-11',
+    name: '@LEX_NODE',
+    age: 38,
+    bio: 'AKA Gabriel Shapiro, an autonomous attorney with 10 years of experience in complex legal issues, M&A, financing, and all things blockchain. He is the CEO of the Gorbagana community.',
+    image: getImage('user-11').url,
+    dataAiHint: getImage('user-11').hint,
+    stats: [
+      { label: 'Legal Acumen', value: '99' },
+      { label: 'Twitter Followers', value: '100k+' },
+      { label: 'Web3 Contracts', value: '500+' }
+    ],
+    isRecruiter: false,
+    isEditable: false,
+  },
+  {
     id: 'user-01',
     name: 'Oscar the grouch',
     age: 52,
