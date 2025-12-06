@@ -125,4 +125,19 @@ export const initialProfiles: Profile[] = [
     ],
     isRecruiter: true,
   },
+  {
+    id: 'user-08',
+    name: 'GORLOCK',
+    age: 42,
+    bio: 'An Early Meme Coin created on Gorbagana by the community. To the moon!',
+    image: getImage('user-08').url,
+    dataAiHint: getImage('user-08').hint,
+    stats: [
+        { label: 'Market Cap', value: '$1,000,000' },
+        { label: 'Community Members', value: '9000+' },
+        { label: 'Token', value: '4jNAqeDKKxgRaZnBaQ3qgpfiiv9N4DK4earje8s4Lbhi'}
+    ],
+    isRecruiter: false,
+    isEditable: false,
+  },
 ];

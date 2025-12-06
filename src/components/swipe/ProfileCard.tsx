@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import type { Profile } from "@/lib/types";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { Info } from "lucide-react";
 
 interface ProfileCardProps {
   profile: Profile;
@@ -84,6 +86,12 @@ export function ProfileCard({ profile, onSwipe, isTop }: ProfileCardProps) {
           priority={isTop}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        
+        <Link href={`/profile/${profile.id}`} className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors"
+          onClick={(e) => e.stopPropagation()} // Prevents card drag
+        >
+            <Info size={24} />
+        </Link>
         
         <div 
             className="absolute top-8 left-8 -rotate-12 transform text-5xl font-bold border-4 border-primary text-primary uppercase tracking-widest p-2"

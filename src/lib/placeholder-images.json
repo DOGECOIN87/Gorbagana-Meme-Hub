@@ -53,6 +53,12 @@
       "description": "A photo for looksmaxxing analysis",
       "imageUrl": "https://images.unsplash.com/photo-1595529057255-ffd9e267d037?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwZXJzb24lMjBzZXJpb3VzfGVufDB8fHx8MTc2NDk5Mjc1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "person serious"
+    },
+    {
+      "id": "user-08",
+      "description": "GORLOCK the destroyer of worlds",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/gorlock.jpg",
+      "imageHint": "person posing"
     }
   ]
 }
