@@ -89,6 +89,12 @@
       "description": "Patrick Bateman looking intense",
       "imageUrl": "https://storage.googleapis.com/aai-web-samples/patrick-bateman.jpg",
       "imageHint": "man suit"
+    },
+    {
+      "id": "user-14",
+      "description": "Trashcoin logo",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/trashcoin.png",
+      "imageHint": "gold coin"
     }
   ]
 }

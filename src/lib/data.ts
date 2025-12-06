@@ -217,4 +217,19 @@ export const initialProfiles: Profile[] = [
     isRecruiter: false,
     isEditable: false,
   },
+  {
+    id: 'user-14',
+    name: 'Trashcoin',
+    age: 1,
+    bio: 'A Peer-to-Peer Trash System powered by Gorbagana Chain. Built for the underdogs and true degens. Proof of Vesting, not for quick flips.',
+    image: getImage('user-14').url,
+    dataAiHint: getImage('user-14').hint,
+    stats: [
+      { label: 'Value', value: 'Proof Buried in Trash' },
+      { label: 'Chain', value: 'Gorbagana' },
+      { label: 'Owner', value: 'Gorviction' },
+    ],
+    isRecruiter: false,
+    isEditable: false,
+  },
 ];
