@@ -77,6 +77,12 @@
       "description": "@LEX_NODE aka Gabriel Shapiro",
       "imageUrl": "https://storage.googleapis.com/aai-web-samples/lex-node.png",
       "imageHint": "man portrait"
+    },
+    {
+      "id": "user-12",
+      "description": "Gorbagio Dumpster Diver",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/gorbagio.png",
+      "imageHint": "anime character"
     }
   ]
 }

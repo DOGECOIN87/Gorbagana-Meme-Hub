@@ -94,7 +94,7 @@ export default function ProfilePage() {
                 </CardContent>
             </Card>
 
-            {(currentProfile.id === 'user-01' || currentProfile.id === 'user-09' || currentProfile.id === 'user-10') && (
+            {(currentProfile.id === 'user-01' || currentProfile.id === 'user-09' || currentProfile.id === 'user-10' || currentProfile.id === 'user-12') && (
                 <Card className="mt-8">
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2"><LinkIcon /> Community</CardTitle>
@@ -104,10 +104,12 @@ export default function ProfilePage() {
                     <Link href={
                         currentProfile.id === 'user-01' ? "https://Gorbagana.wtf" :
                         currentProfile.id === 'user-09' ? "https://www.google.com/search?q=CarolineEllison" :
-                        "https://gorbhouse.wtf"
+                        currentProfile.id === 'user-10' ? "https://gorbhouse.wtf" :
+                        "https://magiceden.us/marketplace/gorbagio?gr"
                     } target="_blank">
                         {currentProfile.id === 'user-01' ? 'Gorbagana Website' : 
-                         currentProfile.id === 'user-10' ? 'Gorbhouse Website' : 'Learn More'}
+                         currentProfile.id === 'user-10' ? 'Gorbhouse Website' : 
+                         currentProfile.id === 'user-12' ? 'View on Magic Eden' : 'Learn More'}
                         <ExternalLink className="ml-2 h-4 w-4" />
                     </Link>
                     </Button>

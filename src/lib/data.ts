@@ -118,7 +118,7 @@ export const initialProfiles: Profile[] = [
     id: 'user-05',
     name: 'X Æ A-12',
     age: 4,
-    bio: '01001100 01101111 01101111 01101011 01101001 01101110 01100111 00100000 01100110 01101111 01110010 00100000 01101101 01111001 00100000 01100111 01101110 01100001 01110010 01100010 01100001 01100111 01100001 01101110 01100001 00101110',
+    bio: '01001100 01101111 01101111 01101011 01101001 01101110 01100111 00100000 01100110 01101111 01110010 00100000 01101101 01111001 00100000 01100111 01101110 01100001 01110010 01100001 01100010 01100001 01100111 01100001 01101110 01100001 00101110',
     image: getImage('user-05').url,
     dataAiHint: getImage('user-05').hint,
     stats: [
@@ -182,6 +182,20 @@ export const initialProfiles: Profile[] = [
         { label: 'Community Size', value: '1000+' },
         { label: 'Solana Native', value: 'Yes' },
         { label: 'Derivative Level', value: '3+' }
+    ],
+    isRecruiter: false,
+    isEditable: false,
+  },
+  {
+    id: 'user-12',
+    name: 'GORBAGIO',
+    age: 4444,
+    bio: '4444 Gorbagio Dumpster Divers living on the GORBAGANA BLOCKCHAIN. Get yours to secure your spot in the dumpster.',
+    image: getImage('user-12').url,
+    dataAiHint: getImage('user-12').hint,
+    stats: [
+      { label: 'Supply', value: '4444' },
+      { label: 'Blockchain', value: 'Gorbagana' },
     ],
     isRecruiter: false,
     isEditable: false,
