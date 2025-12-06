@@ -8,10 +8,17 @@ export default {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
+        headline: ['Rajdhani', 'sans-serif'],
+        body: ['Rajdhani', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
@@ -88,10 +95,20 @@ export default {
             height: '0',
           },
         },
+        shimmer: {
+          '0%, 100%': { backgroundPosition: '-100% 0' },
+          '50%': { backgroundPosition: '100% 0' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-5px)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        shimmer: 'shimmer 2s ease-in-out infinite',
+        float: 'float 3s ease-in-out infinite',
       },
     },
   },

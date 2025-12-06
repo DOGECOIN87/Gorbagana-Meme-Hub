@@ -1,0 +1,128 @@
+import type { Profile } from './types';
+import { PlaceHolderImages } from './placeholder-images';
+
+const getImage = (id: string) => {
+    const img = PlaceHolderImages.find(p => p.id === id);
+    return {
+        url: img?.imageUrl ?? `https://picsum.photos/seed/${id}/600/800`,
+        hint: img?.imageHint ?? ''
+    }
+}
+
+export const initialProfiles: Profile[] = [
+  {
+    id: 'user-profile-01',
+    name: 'Chad Giga',
+    age: 28,
+    bio: 'Just a humble code-maxxer ascending to new planes of existence. My mogging streak is longer than your longest compile time.',
+    image: getImage('user-profile-01').url,
+    dataAiHint: getImage('user-profile-01').hint,
+    stats: [
+      { label: 'Canthal Tilt', value: 'Positive' },
+      { label: 'Mewing Streak', value: '480 days' },
+      { label: 'Github Repos', value: 128 },
+      { label: 'Height', value: `6'5"` },
+    ],
+    isRecruiter: false,
+    isEditable: true,
+  },
+  {
+    id: 'user-01',
+    name: 'Oscar',
+    age: 52,
+    bio: 'Looking for someone to share my trash can with. Must love garbage and complaining. Bonus points if you hate everything.',
+    image: getImage('user-01').url,
+    dataAiHint: getImage('user-01').hint,
+    stats: [
+      { label: 'Canthal Tilt', value: 'Negative' },
+      { label: 'Grumble/min', value: 12 },
+      { label: 'Trash Cans Owned', value: 1 },
+      { label: 'Friends', value: '1 (Slimey)'}
+    ],
+    isRecruiter: false,
+  },
+  {
+    id: 'user-02',
+    name: 'Cookie Monster',
+    age: 48,
+    bio: 'Me want cookie! But me also want... love? Me trade C++ for chocolate chip.',
+    image: getImage('user-02').url,
+    dataAiHint: getImage('user-02').hint,
+    stats: [
+      { label: 'Cookies/sec', value: '9.8' },
+      { label: 'Googly-eye Sync', value: '99.8%' },
+      { label: 'Lines of Code', value: '1,000,000 (mostly "C is for Cookie")' },
+    ],
+    isRecruiter: false,
+  },
+  {
+    id: 'user-03',
+    name: 'Big Bird',
+    age: 6,
+    bio: 'Trying to find my flock! I enjoy long walks on Sesame Street, learning the alphabet, and distributed systems.',
+    image: getImage('user-03').url,
+    dataAiHint: getImage('user-03').hint,
+    stats: [
+      { label: 'Height', value: `8'2"` },
+      { label: 'Nest.js Projects', value: 12 },
+      { label: 'Snuffleupagus Sightings', value: 42 },
+    ],
+    isRecruiter: false,
+  },
+  {
+    id: 'user-04',
+    name: 'Brenda',
+    age: 34,
+    bio: 'Synergy. Disruption. Paradigm shift. Let\'s connect and discuss how your unique looksmaxxing journey aligns with our Q3 hiring goals.',
+    image: getImage('user-04').url,
+    dataAiHint: getImage('user-04').hint,
+    stats: [
+      { label: 'LinkedIn Connections', value: '500+' },
+      { label: 'Response Rate', value: '0.1%' },
+      { label: 'TC Offered', value: '$500k' },
+    ],
+    isRecruiter: true,
+  },
+  {
+    id: 'user-05',
+    name: 'X Æ A-12',
+    age: 4,
+    bio: '01001100 01101111 01101111 01101011 01101001 01101110 01100111 00100000 01100110 01101111 01110010 00100000 01101101 01111001 00100000 01100111 01101110 01100001 01110010 01100010 01100001 01100111 01100001 01101110 01100001 00101110',
+    image: getImage('user-05').url,
+    dataAiHint: getImage('user-05').hint,
+    stats: [
+        { label: 'Processor Speed', value: '5 THz' },
+        { label: 'Cranial Implants', value: 7 },
+        { label: 'Emotions', value: 'null' },
+    ],
+    isRecruiter: false,
+  },
+  {
+    id: 'user-06',
+    name: 'Elmo',
+    age: 3,
+    bio: 'Elmo loves to play! And Elmo thinks your CI/CD pipeline is fascinating! Let\'s talk about it!',
+    image: getImage('user-06').url,
+    dataAiHint: getImage('user-06').hint,
+    stats: [
+      { label: 'Tickles Received', value: '1,337' },
+      { label: 'Friends', value: 'Dorothy the Goldfish' },
+      { label: 'Third-Person References', value: '∞' },
+    ],
+    isRecruiter: false,
+  },
+  {
+    id: 'user-07',
+    name: 'DevRel Dan',
+    age: 29,
+    bio: 'Hey there, awesome developer! I saw your hunter eyes and knew you had the 10x potential we need. Let\'s chat about an exciting opportunity at GorbaCorp.',
+    image: getImage('user-07').url,
+    dataAiHint: getImage('user-07').hint,
+    stats: [
+        { label: 'Stickers Collected', value: 4096 },
+        { label: 'Free T-Shirts', value: 256 },
+        { label: 'Conference Talks', value: 64 },
+    ],
+    isRecruiter: true,
+  },
+];

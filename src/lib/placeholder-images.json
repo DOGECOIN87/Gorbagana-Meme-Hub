@@ -1,3 +1,58 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "user-01",
+      "description": "Oscar the Grouch in his trash can",
+      "imageUrl": "https://images.unsplash.com/photo-1695550359172-5ad6e9143106?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxncnVtcHklMjBtb25zdGVyfGVufDB8fHx8MTc2NTA2MjU3MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "grumpy monster"
+    },
+    {
+      "id": "user-02",
+      "description": "Cookie Monster happily eating cookies",
+      "imageUrl": "https://images.unsplash.com/photo-1496504175726-c7b4523c7e81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxibHVlJTIwbW9uc3RlcnxlbnwwfHx8fDE3NjUwNjI1NzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "blue monster"
+    },
+    {
+      "id": "user-03",
+      "description": "Big Bird smiling",
+      "imageUrl": "https://images.unsplash.com/photo-1618098750285-9402745c67e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx5ZWxsb3clMjBiaXJkfGVufDB8fHx8MTc2NTAwMzM4Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "yellow bird"
+    },
+    {
+      "id": "user-04",
+      "description": "A tech recruiter in a sharp suit",
+      "imageUrl": "https://images.unsplash.com/photo-1625799219697-870b418b4294?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwZXJzb24lMjBzdWl0fGVufDB8fHx8MTc2NTA2MjU3MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person suit"
+    },
+    {
+      "id": "user-05",
+      "description": "A person with a futuristic visor",
+      "imageUrl": "https://images.unsplash.com/photo-1640794082887-8346fb991e66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjB2aXNvcnxlbnwwfHx8fDE3NjUwNjI1NzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person visor"
+    },
+    {
+      "id": "user-06",
+      "description": "Elmo waving",
+      "imageUrl": "https://images.unsplash.com/photo-1599848059314-c8941bd190d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxyZWQlMjBtb25zdGVyfGVufDB8fHx8MTc2NTA2MjU3MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "red monster"
+    },
+    {
+      "id": "user-07",
+      "description": "A friendly looking software engineer",
+      "imageUrl": "https://images.unsplash.com/photo-1629904888099-00285934292b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwZXJzb24lMjBjb2RlfGVufDB8fHx8MTc2NTAyMzcxNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person code"
+    },
+    {
+      "id": "user-profile-01",
+      "description": "A user profile picture",
+      "imageUrl": "https://images.unsplash.com/photo-1741852379060-bc4f7552fe6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwZXJzb24lMjBzZWxmaWV8ZW58MHx8fHwxNzY1MDA0MzUxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person selfie"
+    },
+    {
+      "id": "analysis-photo",
+      "description": "A photo for looksmaxxing analysis",
+      "imageUrl": "https://images.unsplash.com/photo-1595529057255-ffd9e267d037?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwZXJzb24lMjBzZXJpb3VzfGVufDB8fHx8MTc2NDk5Mjc1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person serious"
+    }
+  ]
 }
