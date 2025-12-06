@@ -13,6 +13,7 @@ export type Profile = {
   stats: Stat[];
   isRecruiter: boolean;
   isEditable?: boolean;
+  isVIP?: boolean;
 };
 
 export type Message = {

@@ -6,7 +6,7 @@ import Link from "next/link";
 import type { Profile } from "@/lib/types";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { Info } from "lucide-react";
+import { Info, Crown } from "lucide-react";
 
 interface ProfileCardProps {
   profile: Profile;
@@ -68,7 +68,8 @@ export function ProfileCard({ profile, onSwipe, isTop }: ProfileCardProps) {
       className={cn(
         "absolute w-full h-[500px] select-none overflow-hidden border-2 border-border shadow-lg shadow-accent/10",
         isTop && "cursor-grab",
-        isDragging && "cursor-grabbing"
+        isDragging && "cursor-grabbing",
+        profile.isVIP && "border-yellow-400"
       )}
       style={{
         transform: `translate(${position.x}px, ${position.y}px) rotate(${rotation}deg)`,
@@ -87,6 +88,12 @@ export function ProfileCard({ profile, onSwipe, isTop }: ProfileCardProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
         
+        {profile.isVIP && (
+          <div className="absolute top-4 left-4 text-yellow-400 bg-black/50 rounded-full p-2">
+            <Crown size={24} />
+          </div>
+        )}
+
         <Link href={`/profile/${profile.id}`} className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors"
           onClick={(e) => e.stopPropagation()} // Prevents card drag
         >
@@ -107,8 +114,9 @@ export function ProfileCard({ profile, onSwipe, isTop }: ProfileCardProps) {
         </div>
 
         <CardContent className="absolute bottom-0 left-0 right-0 p-4 text-white">
-          <h2 className="text-3xl font-bold">
-            {profile.name}, <span className="font-light">{profile.age}</span>
+          <h2 className="text-3xl font-bold flex items-center gap-2">
+            {profile.name}
+            <span className="font-light">{profile.age}</span>
           </h2>
           <p className="text-sm text-white/80 mt-1 line-clamp-2">{profile.bio}</p>
         </CardContent>

@@ -10,10 +10,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { User, Wand2, Save, Edit, Link as LinkIcon, ExternalLink } from "lucide-react";
+import { User, Wand2, Save, Edit, Link as LinkIcon, ExternalLink, Crown } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { generateInitialProfileBio } from "@/ai/flows/generate-initial-profile-bio";
 import type { Profile } from "@/lib/types";
+import { Badge } from "@/components/ui/badge";
 
 export default function ProfilePage() {
   const { id: profileId } = useParams();
@@ -88,9 +89,17 @@ export default function ProfilePage() {
                 <CardContent className="p-6 flex flex-col items-center">
                     <div className="relative h-40 w-40 rounded-full overflow-hidden border-4 border-accent shadow-lg">
                         <Image src={currentProfile.image} alt={currentProfile.name} fill sizes="160px" className="object-cover" data-ai-hint={currentProfile.dataAiHint} />
+                        {currentProfile.isVIP && (
+                            <div className="absolute bottom-0 right-0 bg-yellow-400 p-2 rounded-full border-4 border-card">
+                                <Crown className="text-black" size={24}/>
+                            </div>
+                        )}
                     </div>
-                    <h2 className="text-2xl font-bold mt-4">{currentProfile.name}</h2>
-                    <p className="text-muted-foreground">{currentProfile.age} years old</p>
+                    <div className="text-center mt-4">
+                        <h2 className="text-2xl font-bold">{currentProfile.name}</h2>
+                        {currentProfile.isVIP && <Badge className="mt-1 bg-yellow-400 text-black hover:bg-yellow-500">VIP</Badge>}
+                        <p className="text-muted-foreground">{currentProfile.age} years old</p>
+                    </div>
                 </CardContent>
             </Card>
 

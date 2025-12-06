@@ -27,6 +27,23 @@ export const initialProfiles: Profile[] = [
     isEditable: true,
   },
   {
+    id: 'user-13',
+    name: 'Patrick Bateman',
+    age: 27,
+    bio: 'Quintessential 80s yuppie by day, depraved serial killer by night. This polished exterior hides a monstrous, non-existent self beneath.',
+    image: getImage('user-13').url,
+    dataAiHint: getImage('user-13').hint,
+    stats: [
+      { label: 'Skincare', value: 'Obsessive' },
+      { label: 'Business Card', value: 'Bone & Silian Rail' },
+      { label: 'Reservations', value: 'Dorsia, 8:30' },
+      { label: 'Axe Sharpness', value: 'Lethal' }
+    ],
+    isRecruiter: false,
+    isEditable: false,
+    isVIP: true,
+  },
+  {
     id: 'user-11',
     name: '@LEX_NODE',
     age: 38,

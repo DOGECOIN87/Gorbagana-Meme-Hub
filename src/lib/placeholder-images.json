@@ -83,6 +83,12 @@
       "description": "Gorbagio Dumpster Diver",
       "imageUrl": "https://storage.googleapis.com/aai-web-samples/gorbagio.png",
       "imageHint": "anime character"
+    },
+    {
+      "id": "user-13",
+      "description": "Patrick Bateman looking intense",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/patrick-bateman.jpg",
+      "imageHint": "man suit"
     }
   ]
 }
