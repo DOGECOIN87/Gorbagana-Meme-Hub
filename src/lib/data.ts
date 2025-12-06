@@ -156,4 +156,19 @@ export const initialProfiles: Profile[] = [
     isRecruiter: false,
     isEditable: false,
   },
+  {
+    id: 'user-10',
+    name: 'Gorbhouse',
+    age: 1,
+    bio: "A liked and respected Solana native Memecoin/Community currently bridging to Gorbagana. As @Lex_Node states it: \"I like it because it's a derivative of a derivative of possibly another derivative but which stuck around and never stopped building, like Madbro on Solana.\"",
+    image: getImage('user-10').url,
+    dataAiHint: getImage('user-10').hint,
+    stats: [
+        { label: 'Community Size', value: '1000+' },
+        { label: 'Solana Native', value: 'Yes' },
+        { label: 'Derivative Level', value: '3+' }
+    ],
+    isRecruiter: false,
+    isEditable: false,
+  },
 ];

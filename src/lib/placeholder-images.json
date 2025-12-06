@@ -65,6 +65,12 @@
       "description": "Caroline Ellison",
       "imageUrl": "https://storage.googleapis.com/aai-web-samples/caroline_ellison.jpg",
       "imageHint": "woman glasses"
+    },
+    {
+      "id": "user-10",
+      "description": "Gorbhouse mascot",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/gorbhouse.png",
+      "imageHint": "trash can"
     }
   ]
 }
