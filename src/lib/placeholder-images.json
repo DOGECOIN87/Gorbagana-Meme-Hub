@@ -111,8 +111,14 @@
     {
       "id": "user-17",
       "description": "GORBOY logo",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/gorboy-2.png",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/gorboy.png",
       "imageHint": "game console"
+    },
+    {
+      "id": "user-18",
+      "description": "Backpack Wallet logo",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/backpack-wallet.png",
+      "imageHint": "green monster backpack"
     }
   ]
 }

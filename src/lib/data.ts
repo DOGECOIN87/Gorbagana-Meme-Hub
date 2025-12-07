@@ -275,4 +275,19 @@ export const initialProfiles: Profile[] = [
     isRecruiter: false,
     isEditable: false,
   },
+  {
+    id: 'user-18',
+    name: 'Backpack Wallet',
+    age: 1,
+    bio: 'A self-custodial crypto wallet for Solana & ETH with an integrated exchange and xNFT support. The first Solana native wallet to support the Gorbagana network.',
+    image: getImage('user-18').url,
+    dataAiHint: getImage('user-18').hint,
+    stats: [
+      { label: 'Networks', value: 'SOL & ETH' },
+      { label: 'xNFT Support', value: 'Yes' },
+      { label: 'Gorbagana Native', value: 'Yes' }
+    ],
+    isRecruiter: false,
+    isEditable: false,
+  },
 ];
