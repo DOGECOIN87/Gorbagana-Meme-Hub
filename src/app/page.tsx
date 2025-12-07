@@ -14,7 +14,7 @@ export default function Home() {
     <div className="flex h-screen w-full flex-col items-center justify-center p-4">
       <div className="flex items-center gap-2 text-2xl font-bold text-primary mb-4 animate-float">
         <Swords size={28} />
-        <h1>Gorbagana</h1>
+        <h1>Gorbagana - the Meme Chain</h1>
       </div>
       {profilesToSwipe.length > 0 ? (
         <SwipeDeck profiles={profilesToSwipe} onSwipe={handleSwipe} />

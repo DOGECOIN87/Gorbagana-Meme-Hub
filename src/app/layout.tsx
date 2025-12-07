@@ -6,8 +6,8 @@ import { NoiseOverlay } from "@/components/layout/NoiseOverlay";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: "The Looksmaxx & Gorbagana Community Connection",
-  description: "Looksmaxxing meets Gorbagana.",
+  title: "Gorbagana - the Meme Chain",
+  description: "The official app for the Gorbagana meme chain community.",
 };
 
 export default function RootLayout({
