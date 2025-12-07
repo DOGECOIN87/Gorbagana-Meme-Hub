@@ -125,6 +125,12 @@
       "description": "GORBAG logo",
       "imageUrl": "https://storage.googleapis.com/aai-web-samples/gorbag.png",
       "imageHint": "green logo"
+    },
+    {
+      "id": "user-20",
+      "description": "Gor-incinerator coin",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/gor-incinerator.png",
+      "imageHint": "monster coin"
     }
   ]
 }

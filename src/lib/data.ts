@@ -305,6 +305,20 @@ export const initialProfiles: Profile[] = [
     isRecruiter: false,
     isEditable: false,
   },
+  {
+    id: 'user-20',
+    name: 'Gor-incinerator',
+    age: 1,
+    bio: 'Gor-Incinerator is a focused utility for closing empty token accounts on the Gorbagana network so you can recover rent that would otherwise be locked away.',
+    image: getImage('user-20').url,
+    dataAiHint: getImage('user-20').hint,
+    stats: [
+      { label: 'Accounts Closed', value: '1000+' },
+      { label: 'Rent Recovered', value: '$$$' }
+    ],
+    isRecruiter: false,
+    isEditable: false,
+  }
 ];
 
     
