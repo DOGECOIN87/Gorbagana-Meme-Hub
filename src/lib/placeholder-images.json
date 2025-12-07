@@ -1,6 +1,12 @@
 {
   "placeholderImages": [
     {
+      "id": "splash-origin",
+      "description": "The tweet exchange that started Gorbagana",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/gorbagana-origin-tweet.png",
+      "imageHint": "tweet conversation"
+    },
+    {
       "id": "user-01",
       "description": "Oscar the Grouch in his trash can",
       "imageUrl": "https://images.unsplash.com/photo-1695550359172-5ad6e9143106?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxncnVtcHklMjBtb25zdGVyfGVufDB8fHx8MTc2NTA2MjU3MXww&ixlib=rb-4.1.0&q=80&w=1080",
