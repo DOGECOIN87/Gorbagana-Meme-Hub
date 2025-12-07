@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -103,109 +104,21 @@ export default function ProfilePage() {
                 </CardContent>
             </Card>
 
-            {(currentProfile.id === 'user-01' || currentProfile.id === 'user-09' || currentProfile.id === 'user-10' || currentProfile.id === 'user-12' || currentProfile.id === 'user-14' || currentProfile.id === 'user-16' || currentProfile.id === 'user-17' || currentProfile.id === 'user-18' || currentProfile.id === 'user-19' || currentProfile.id === 'user-20') && (
-                <Card className="mt-8">
+            {currentProfile.links && currentProfile.links.length > 0 && (
+              <Card className="mt-8">
                 <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><LinkIcon /> Community</CardTitle>
+                  <CardTitle className="flex items-center gap-2">
+                    <LinkIcon /> Links
+                  </CardTitle>
                 </CardHeader>
-                <CardContent>
-                    <Button asChild className="w-full">
-                    <Link href={
-                        currentProfile.id === 'user-01' ? "https://Gorbagana.wtf" :
-                        currentProfile.id === 'user-09' ? "https://www.google.com/search?q=CarolineEllison" :
-                        currentProfile.id === 'user-10' ? "https://gorbhouse.wtf" :
-                        currentProfile.id === 'user-12' ? "https://magiceden.us/marketplace/gorbagio?gr" :
-                        currentProfile.id === 'user-14' ? "https://trashcoin.wtf/" :
-                        currentProfile.id === 'user-16' ? "https://gorid.com/" :
-                        currentProfile.id === 'user-17' ? "https://www.gorboy.wtf/" :
-                        currentProfile.id === 'user-18' ? "https://backpack.app/" :
-                        currentProfile.id === 'user-19' ? "https://gorbag.vercel.app" :
-                        "https://Gor-incinerator.com"
-                    } target="_blank">
-                        {currentProfile.id === 'user-01' ? 'Gorbagana Website' : 
-                         currentProfile.id === 'user-10' ? 'Gorbhouse Website' : 
-                         currentProfile.id === 'user-12' ? 'View on Magic Eden' :
-                         currentProfile.id === 'user-14' ? 'Trashcoin Website' :
-                         currentProfile.id === 'user-16' ? 'GORID Website' :
-                         currentProfile.id === 'user-17' ? 'GORBOY Website' :
-                         currentProfile.id === 'user-18' ? 'Backpack Wallet' :
-                         currentProfile.id === 'user-19' ? 'GORBAG Website' :
-                         currentProfile.id === 'user-20' ? 'Gor-incinerator Website' :
-                         'Learn More'}
-                        <ExternalLink className="ml-2 h-4 w-4" />
-                    </Link>
+                <CardContent className="flex flex-col gap-2">
+                  {currentProfile.links.map(link => (
+                    <Button asChild key={link.url} className="w-full" variant={currentProfile.links.length > 1 ? 'secondary' : 'default'}>
+                      <Link href={link.url} target="_blank">
+                        {link.label} <ExternalLink className="ml-2 h-4 w-4" />
+                      </Link>
                     </Button>
-                </CardContent>
-                </Card>
-            )}
-
-            {currentProfile.id === 'user-11' && (
-              <Card className="mt-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <LinkIcon /> Links
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex flex-col gap-2">
-                  <Button asChild className="w-full">
-                    <Link href="https://lex-node.github.io/sustain/" target="_blank">
-                      Website <ExternalLink className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                  <Button asChild className="w-full" variant="secondary">
-                    <Link href="https://x.com/lex_node" target="_blank">
-                      X.com Profile <ExternalLink className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            )}
-            
-            {currentProfile.id === 'user-22' && (
-              <Card className="mt-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <LinkIcon /> Links
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex flex-col gap-2">
-                  <Button asChild className="w-full">
-                    <Link href="https://www.tiktok.com/t/ZTHw8VLSRYUQ5-cKaWy/" target="_blank">
-                      TikTok <ExternalLink className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                  <Button asChild className="w-full" variant="secondary">
-                    <Link href="https://looksmax.org/" target="_blank">
-                      Website <ExternalLink className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                  <Button asChild className="w-full">
-                    <Link href="https://apps.apple.com/us/app/looksmax-ai/id6474518292" target="_blank">
-                      App Store <ExternalLink className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            )}
-
-            {currentProfile.id === 'user-15' && (
-              <Card className="mt-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <LinkIcon /> Links
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex flex-col gap-2">
-                  <Button asChild className="w-full">
-                    <Link href="https://trashbin.fun" target="_blank">
-                      Website <ExternalLink className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                  <Button asChild className="w-full" variant="secondary">
-                    <Link href="https://x.com/TrashBinGOR" target="_blank">
-                      X.com Profile <ExternalLink className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
+                  ))}
                 </CardContent>
               </Card>
             )}

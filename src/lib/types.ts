@@ -1,6 +1,12 @@
+
 export type Stat = {
   label: string;
   value: string | number;
+};
+
+export type ProfileLink = {
+    label: string;
+    url: string;
 };
 
 export type Profile = {
@@ -14,6 +20,7 @@ export type Profile = {
   isRecruiter: boolean;
   isEditable?: boolean;
   isVIP?: boolean;
+  links?: ProfileLink[];
 };
 
 export type Message = {

@@ -1,3 +1,4 @@
+
 import type { Profile } from './types';
 import { PlaceHolderImages } from './placeholder-images';
 
@@ -41,6 +42,11 @@ export const initialProfiles: Profile[] = [
     isRecruiter: false,
     isEditable: false,
     isVIP: true,
+    links: [
+        { label: 'TikTok', url: 'https://www.tiktok.com/t/ZTHw8VLSRYUQ5-cKaWy/'},
+        { label: 'Website', url: 'https://looksmax.org/'},
+        { label: 'App Store', url: 'https://apps.apple.com/us/app/looksmax-ai/id6474518292'},
+    ]
   },
   {
     id: 'user-21',
@@ -90,6 +96,10 @@ export const initialProfiles: Profile[] = [
     ],
     isRecruiter: false,
     isEditable: false,
+    links: [
+        { label: 'Website', url: 'https://lex-node.github.io/sustain/'},
+        { label: 'X.com Profile', url: 'https://x.com/lex_node'},
+    ]
   },
   {
     id: 'user-01',
@@ -106,6 +116,7 @@ export const initialProfiles: Profile[] = [
     ],
     isRecruiter: false,
     isEditable: false,
+    links: [{ label: 'Gorbagana Website', url: 'https://Gorbagana.wtf' }]
   },
   {
     id: 'user-09',
@@ -121,6 +132,7 @@ export const initialProfiles: Profile[] = [
     ],
     isRecruiter: false,
     isEditable: false,
+    links: [{ label: 'Learn More', url: 'https://www.google.com/search?q=CarolineEllison' }]
   },
   {
     id: 'user-02',
@@ -235,6 +247,7 @@ export const initialProfiles: Profile[] = [
     ],
     isRecruiter: false,
     isEditable: false,
+    links: [{ label: 'Gorbhouse Website', url: 'https://gorbhouse.wtf' }]
   },
   {
     id: 'user-12',
@@ -249,6 +262,7 @@ export const initialProfiles: Profile[] = [
     ],
     isRecruiter: false,
     isEditable: false,
+    links: [{ label: 'View on Magic Eden', url: 'https://magiceden.us/marketplace/gorbagio?gr' }]
   },
   {
     id: 'user-14',
@@ -264,6 +278,7 @@ export const initialProfiles: Profile[] = [
     ],
     isRecruiter: false,
     isEditable: false,
+    links: [{ label: 'Trashcoin Website', url: 'https://trashcoin.wtf/' }]
   },
   {
     id: 'user-15',
@@ -279,6 +294,10 @@ export const initialProfiles: Profile[] = [
     ],
     isRecruiter: false,
     isEditable: false,
+    links: [
+        { label: 'Website', url: 'https://trashbin.fun' },
+        { label: 'X.com Profile', url: 'https://x.com/TrashBinGOR' },
+    ]
   },
   {
     id: 'user-16',
@@ -293,6 +312,7 @@ export const initialProfiles: Profile[] = [
     ],
     isRecruiter: false,
     isEditable: false,
+    links: [{ label: 'GORID Website', url: 'https://gorid.com/' }]
   },
   {
     id: 'user-17',
@@ -307,6 +327,7 @@ export const initialProfiles: Profile[] = [
     ],
     isRecruiter: false,
     isEditable: false,
+    links: [{ label: 'GORBOY Website', url: 'https://www.gorboy.wtf/' }]
   },
   {
     id: 'user-18',
@@ -322,6 +343,7 @@ export const initialProfiles: Profile[] = [
     ],
     isRecruiter: false,
     isEditable: false,
+    links: [{ label: 'Backpack Wallet', url: 'https://backpack.app/' }]
   },
   {
     id: 'user-19',
@@ -337,6 +359,7 @@ export const initialProfiles: Profile[] = [
     ],
     isRecruiter: false,
     isEditable: false,
+    links: [{ label: 'GORBAG Website', url: 'https://gorbag.vercel.app' }]
   },
   {
     id: 'user-20',
@@ -351,6 +374,7 @@ export const initialProfiles: Profile[] = [
     ],
     isRecruiter: false,
     isEditable: false,
+    links: [{ label: 'Gor-incinerator Website', url: 'https://Gor-incinerator.com' }]
   }
 ];
 
