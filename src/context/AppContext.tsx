@@ -16,12 +16,13 @@ interface AppContextType {
   handleSwipe: (profileId: string, direction: SwipeDirection) => void;
   sendMessage: (profileId: string, text: string) => Promise<void>;
   updateUserProfile: (updatedProfile: Profile) => void;
+  addProfile: (newProfile: Omit<Profile, 'id' | 'stats' | 'isRecruiter'>) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [profiles] = useState<Profile[]>(initialProfiles);
+  const [profiles, setProfiles] = useState<Profile[]>(initialProfiles);
   const [userProfile, setUserProfile] = useState<Profile>(profiles.find(p => p.isEditable)!);
   const [swipes, setSwipes] = useState<Record<string, SwipeDirection>>({});
   const [matches, setMatches] = useState<Profile[]>([]);
@@ -70,6 +71,19 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setUserProfile(updatedProfile);
   };
 
+  const addProfile = (newProfileData: Omit<Profile, 'id' | 'stats' | 'isRecruiter'>) => {
+    const newProfile: Profile = {
+      ...newProfileData,
+      id: `user-created-${Date.now()}`,
+      stats: [
+        { label: 'Community Rank', value: 'Newbie' },
+        { label: 'Cred', value: 10 },
+      ],
+      isRecruiter: false,
+    };
+    setProfiles(prev => [newProfile, ...prev]);
+  };
+
   const sendMessage = async (profileId: string, text: string) => {
     const userMessage: Message = {
       id: `msg-${Date.now()}`,
@@ -111,7 +125,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   return (
     <AppContext.Provider
-      value={{ profiles, userProfile, swipes, matches, chats, handleSwipe, sendMessage, updateUserProfile }}
+      value={{ profiles, userProfile, swipes, matches, chats, handleSwipe, sendMessage, updateUserProfile, addProfile }}
     >
       {children}
     </AppContext.Provider>
