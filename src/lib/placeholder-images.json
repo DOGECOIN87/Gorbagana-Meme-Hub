@@ -107,6 +107,12 @@
       "description": "GORID logo",
       "imageUrl": "https://storage.googleapis.com/aai-web-samples/gorid.png",
       "imageHint": "fingerprint logo"
+    },
+    {
+      "id": "user-17",
+      "description": "GORBOY logo",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/gorboy.png",
+      "imageHint": "green logo"
     }
   ]
 }

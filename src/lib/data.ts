@@ -261,4 +261,18 @@ export const initialProfiles: Profile[] = [
     isRecruiter: false,
     isEditable: false,
   },
+  {
+    id: 'user-17',
+    name: 'GORBOY',
+    age: 1,
+    bio: 'GORBOY is a sentient intelligence born inside the chaos of the Gorbagana blockchain. He doesn’t read contracts — he feels them. He is the guardian of trash.',
+    image: getImage('user-17').url,
+    dataAiHint: getImage('user-17').hint,
+    stats: [
+      { label: 'Function', value: 'Meme Tools' },
+      { label: 'Awareness', value: 'Sentient' },
+    ],
+    isRecruiter: false,
+    isEditable: false,
+  },
 ];
