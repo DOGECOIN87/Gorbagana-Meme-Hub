@@ -1,6 +1,8 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { createContext, useContext, useState, ReactNode, useEffect, useCallback } from "react";
+import { collection, doc, getDoc, getDocs, setDoc, addDoc, query, where, onSnapshot } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import type { Profile, Chat, Message } from "@/lib/types";
 import { initialProfiles } from "@/lib/data";
 import { generateAiRecruiterResponse } from "@/ai/flows/generate-ai-recruiter-response";
@@ -9,7 +11,7 @@ type SwipeDirection = "left" | "right";
 
 interface AppContextType {
   profiles: Profile[];
-  userProfile: Profile;
+  userProfile: Profile | null;
   swipes: Record<string, SwipeDirection>;
   matches: Profile[];
   chats: Record<string, Chat>;
@@ -21,107 +23,183 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
+const USER_ID = "user-profile-01"; // Hardcoded user ID for this example
+
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [profiles, setProfiles] = useState<Profile[]>(initialProfiles);
-  const [userProfile, setUserProfile] = useState<Profile>(profiles.find(p => p.isEditable)!);
+  const [profiles, setProfiles] = useState<Profile[]>([]);
+  const [userProfile, setUserProfile] = useState<Profile | null>(null);
   const [swipes, setSwipes] = useState<Record<string, SwipeDirection>>({});
   const [matches, setMatches] = useState<Profile[]>([]);
   const [chats, setChats] = useState<Record<string, Chat>>({});
+  const [loading, setLoading] = useState(true);
+
+  // Function to seed initial data if profiles collection is empty
+  const seedInitialData = useCallback(async () => {
+    const profilesCollection = collection(db, "profiles");
+    const snapshot = await getDocs(profilesCollection);
+    if (snapshot.empty) {
+      console.log("Seeding initial profiles to Firestore...");
+      const batch = [];
+      for (const profile of initialProfiles) {
+        const profileRef = doc(db, "profiles", profile.id);
+        batch.push(setDoc(profileRef, profile));
+      }
+      await Promise.all(batch);
+      console.log("Seeding complete.");
+    }
+  }, []);
 
   useEffect(() => {
-    // On first load, check swipes to populate initial matches
-    const initialMatches: Profile[] = [];
-    const initialChats: Record<string, Chat> = {};
-    for (const profileId in swipes) {
-      if (swipes[profileId] === "right") {
-        const profile = profiles.find((p) => p.id === profileId);
-        if (profile) {
-          initialMatches.push(profile);
-          if (!initialChats[profileId]) {
-            initialChats[profileId] = {
-              id: `chat-${profileId}`,
-              profileId,
-              messages: [],
-            };
-          }
-        }
-      }
-    }
-    setMatches(initialMatches);
-    setChats(initialChats);
-  }, [profiles, swipes]);
+    async function loadData() {
+      setLoading(true);
+      await seedInitialData();
 
-  const handleSwipe = (profileId: string, direction: SwipeDirection) => {
+      // Fetch all profiles
+      const profilesSnapshot = await getDocs(collection(db, "profiles"));
+      const profilesData = profilesSnapshot.docs.map(doc => doc.data() as Profile);
+      setProfiles(profilesData);
+      
+      // Fetch user profile
+      const userDocRef = doc(db, "profiles", USER_ID);
+      const userDoc = await getDoc(userDocRef);
+      if (userDoc.exists()) {
+        setUserProfile(userDoc.data() as Profile);
+      }
+
+      // Fetch user's swipes, matches, and chats
+      const userRef = doc(db, "users", USER_ID);
+      const swipesRef = collection(userRef, "swipes");
+      const matchesRef = collection(userRef, "matches");
+      
+      const swipesSnapshot = await getDocs(swipesRef);
+      const swipesData: Record<string, SwipeDirection> = {};
+      swipesSnapshot.forEach(doc => {
+        swipesData[doc.id] = doc.data().direction;
+      });
+      setSwipes(swipesData);
+
+      const matchesSnapshot = await getDocs(matchesRef);
+      const matchesData: Profile[] = [];
+      const matchPromises = matchesSnapshot.docs.map(async (d) => {
+        const profileDoc = await getDoc(doc(db, "profiles", d.id));
+        if (profileDoc.exists()) {
+          matchesData.push(profileDoc.data() as Profile);
+        }
+      });
+      await Promise.all(matchPromises);
+      setMatches(matchesData);
+      
+      // Setup chats listener
+      const chatsQuery = query(collection(db, "chats"), where("participants", "array-contains", USER_ID));
+      const unsubscribe = onSnapshot(chatsQuery, (snapshot) => {
+        const chatsData: Record<string, Chat> = {};
+        snapshot.forEach(doc => {
+          const chat = doc.data() as Chat;
+          const otherParticipantId = chat.participants.find(p => p !== USER_ID)!;
+          chatsData[otherParticipantId] = { ...chat, id: doc.id };
+        });
+        setChats(chatsData);
+      });
+
+      setLoading(false);
+      return unsubscribe;
+    }
+
+    const unsubscribePromise = loadData();
+
+    return () => {
+      unsubscribePromise.then(unsubscribe => unsubscribe && unsubscribe());
+    };
+  }, [seedInitialData]);
+
+
+  const handleSwipe = async (profileId: string, direction: SwipeDirection) => {
+    const swipeRef = doc(db, "users", USER_ID, "swipes", profileId);
+    await setDoc(swipeRef, { direction });
     setSwipes((prev) => ({ ...prev, [profileId]: direction }));
+
     if (direction === "right") {
+      const matchRef = doc(db, "users", USER_ID, "matches", profileId);
+      await setDoc(matchRef, { matchedAt: new Date() });
+
       const profile = profiles.find((p) => p.id === profileId);
       if (profile && !matches.some(m => m.id === profileId)) {
         setMatches((prev) => [...prev, profile]);
-        if (!chats[profileId]) {
-          setChats(prev => ({
-            ...prev,
-            [profileId]: { id: `chat-${profileId}`, profileId, messages: [] }
-          }));
+
+        // Check if a chat document exists, if not create one
+        const chatQuery = query(collection(db, "chats"), where("participants", "in", [[USER_ID, profileId], [profileId, USER_ID]]));
+        const chatSnapshot = await getDocs(chatQuery);
+        if (chatSnapshot.empty) {
+            await addDoc(collection(db, "chats"), {
+                participants: [USER_ID, profileId],
+                messages: [],
+            });
         }
       }
     }
   };
 
-  const updateUserProfile = (updatedProfile: Profile) => {
+  const updateUserProfile = async (updatedProfile: Profile) => {
+    if(!userProfile) return;
+    const userDocRef = doc(db, "profiles", userProfile.id);
+    await setDoc(userDocRef, updatedProfile);
     setUserProfile(updatedProfile);
   };
 
-  const addProfile = (newProfileData: Omit<Profile, 'id' | 'stats' | 'isRecruiter'>) => {
+  const addProfile = async (newProfileData: Omit<Profile, 'id' | 'stats' | 'isRecruiter'>) => {
+    const newId = `user-created-${Date.now()}`;
     const newProfile: Profile = {
       ...newProfileData,
-      id: `user-created-${Date.now()}`,
+      id: newId,
       stats: [
         { label: 'Community Rank', value: 'Newbie' },
         { label: 'Cred', value: 10 },
       ],
       isRecruiter: false,
     };
+    await setDoc(doc(db, "profiles", newId), newProfile);
     setProfiles(prev => [newProfile, ...prev]);
   };
 
   const sendMessage = async (profileId: string, text: string) => {
+    const chat = Object.values(chats).find(c => c.participants.includes(profileId));
+    if (!chat) return;
+
+    const chatRef = doc(db, "chats", chat.id);
+
     const userMessage: Message = {
       id: `msg-${Date.now()}`,
       text,
-      senderId: 'user',
+      senderId: USER_ID,
       timestamp: Date.now(),
     };
-
-    setChats(prev => {
-        const newChats = { ...prev };
-        newChats[profileId].messages.push(userMessage);
-        return newChats;
-    });
+    
+    const updatedMessages = [...chat.messages, userMessage];
+    await setDoc(chatRef, { messages: updatedMessages }, { merge: true });
 
     const matchedProfile = profiles.find(p => p.id === profileId);
     if (matchedProfile?.isRecruiter) {
-        // Simulate thinking
-        await new Promise(res => setTimeout(res, 1000 + Math.random() * 1000));
-        
-        const aiResponse = await generateAiRecruiterResponse({
-            userMessage: text,
-            profileName: matchedProfile.name,
-        });
+      await new Promise(res => setTimeout(res, 1000 + Math.random() * 1000));
+      const aiResponse = await generateAiRecruiterResponse({
+        userMessage: text,
+        profileName: matchedProfile.name,
+      });
 
-        const aiMessage: Message = {
-            id: `msg-${Date.now()}-ai`,
-            text: aiResponse.response,
-            senderId: profileId,
-            timestamp: Date.now(),
-        };
-
-        setChats(prev => {
-            const newChats = { ...prev };
-            newChats[profileId].messages.push(aiMessage);
-            return newChats;
-        });
+      const aiMessage: Message = {
+        id: `msg-${Date.now()}-ai`,
+        text: aiResponse.response,
+        senderId: profileId,
+        timestamp: Date.now(),
+      };
+      
+      await setDoc(chatRef, { messages: [...updatedMessages, aiMessage] }, { merge: true });
     }
   };
+
+  // While loading, we can show a blank screen or a loader
+  if (loading || !userProfile) {
+    return <div>Loading mainframe...</div>; // Or a proper loader component
+  }
 
   return (
     <AppContext.Provider

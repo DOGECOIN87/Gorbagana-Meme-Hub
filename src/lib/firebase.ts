@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp, getApp, getApps } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
@@ -16,6 +17,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+const db = getFirestore(app);
+
 
 // Conditionally initialize analytics only in the browser
 let analytics;
@@ -24,4 +27,4 @@ if (typeof window !== 'undefined') {
 }
 
 
-export { app, analytics };
+export { app, db, analytics };

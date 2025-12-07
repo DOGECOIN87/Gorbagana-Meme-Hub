@@ -19,12 +19,12 @@ export type Profile = {
 export type Message = {
   id: string;
   text: string;
-  senderId: string; // 'user' or profile.id
+  senderId: string; // 'user-profile-01' or profile.id
   timestamp: number;
 };
 
 export type Chat = {
   id: string;
-  profileId: string;
+  participants: string[];
   messages: Message[];
 };
