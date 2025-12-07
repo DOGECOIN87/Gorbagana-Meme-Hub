@@ -290,4 +290,21 @@ export const initialProfiles: Profile[] = [
     isRecruiter: false,
     isEditable: false,
   },
+  {
+    id: 'user-19',
+    name: 'GORBAG',
+    age: 1,
+    bio: 'A powerful non-custodial native wallet for the @Gorbagana_chain network • Beta Release Out • Mobile Soon • Not Associated With Any Token',
+    image: getImage('user-19').url,
+    dataAiHint: getImage('user-19').hint,
+    stats: [
+      { label: 'Network', value: 'Gorbagana' },
+      { label: 'Status', value: 'Beta Release' },
+      { label: 'Mobile', value: 'Coming Soon' }
+    ],
+    isRecruiter: false,
+    isEditable: false,
+  },
 ];
+
+    

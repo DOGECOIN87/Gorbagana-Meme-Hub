@@ -119,6 +119,12 @@
       "description": "Backpack Wallet logo",
       "imageUrl": "https://storage.googleapis.com/aai-web-samples/backpack-wallet.png",
       "imageHint": "green monster backpack"
+    },
+    {
+      "id": "user-19",
+      "description": "GORBAG logo",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/gorbag.png",
+      "imageHint": "green logo"
     }
   ]
 }
