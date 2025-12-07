@@ -11,7 +11,7 @@ type SwipeDirection = "left" | "right";
 
 interface AppContextType {
   profiles: Profile[];
-  userProfile: Profile | null;
+  userProfile: Profile;
   swipes: Record<string, SwipeDirection>;
   matches: Profile[];
   chats: Record<string, Chat>;
@@ -54,18 +54,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
       setLoading(true);
       await seedInitialData();
 
-      // Fetch all profiles
-      const profilesSnapshot = await getDocs(collection(db, "profiles"));
-      const profilesData = profilesSnapshot.docs.map(doc => doc.data() as Profile);
-      setProfiles(profilesData);
+      // Setup profile listener
+      const profileUnsubscribe = onSnapshot(collection(db, "profiles"), (snapshot) => {
+        const profilesData = snapshot.docs.map(doc => doc.data() as Profile);
+        setProfiles(profilesData);
+        
+        const mainUserProfile = profilesData.find(p => p.id === USER_ID);
+        if (mainUserProfile) {
+          setUserProfile(mainUserProfile);
+        }
+      });
       
-      // Fetch user profile
-      const userDocRef = doc(db, "profiles", USER_ID);
-      const userDoc = await getDoc(userDocRef);
-      if (userDoc.exists()) {
-        setUserProfile(userDoc.data() as Profile);
-      }
-
       // Fetch user's swipes, matches, and chats
       const userRef = doc(db, "users", USER_ID);
       const swipesRef = collection(userRef, "swipes");
@@ -79,19 +78,19 @@ export function AppProvider({ children }: { children: ReactNode }) {
       setSwipes(swipesData);
 
       const matchesSnapshot = await getDocs(matchesRef);
-      const matchesData: Profile[] = [];
       const matchPromises = matchesSnapshot.docs.map(async (d) => {
         const profileDoc = await getDoc(doc(db, "profiles", d.id));
         if (profileDoc.exists()) {
-          matchesData.push(profileDoc.data() as Profile);
+          return profileDoc.data() as Profile;
         }
+        return null;
       });
-      await Promise.all(matchPromises);
+      const matchesData = (await Promise.all(matchPromises)).filter((p): p is Profile => p !== null);
       setMatches(matchesData);
       
       // Setup chats listener
       const chatsQuery = query(collection(db, "chats"), where("participants", "array-contains", USER_ID));
-      const unsubscribe = onSnapshot(chatsQuery, (snapshot) => {
+      const chatUnsubscribe = onSnapshot(chatsQuery, (snapshot) => {
         const chatsData: Record<string, Chat> = {};
         snapshot.forEach(doc => {
           const chat = doc.data() as Chat;
@@ -102,7 +101,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
       });
 
       setLoading(false);
-      return unsubscribe;
+      return () => {
+        profileUnsubscribe();
+        chatUnsubscribe();
+      };
     }
 
     const unsubscribePromise = loadData();
@@ -142,11 +144,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const updateUserProfile = async (updatedProfile: Profile) => {
     if(!userProfile) return;
     const userDocRef = doc(db, "profiles", userProfile.id);
-    await setDoc(userDocRef, updatedProfile);
+    await setDoc(userDocRef, updatedProfile, { merge: true });
     setUserProfile(updatedProfile);
   };
 
-  const addProfile = async (newProfileData: Omit<Profile, 'id' | 'stats' | 'isRecruiter'>) => {
+  const addProfile = async (newProfileData: Omit<Profile, 'id' | 'stats' | 'isRecruiter' | 'isEditable'>) => {
     const newId = `user-created-${Date.now()}`;
     const newProfile: Profile = {
       ...newProfileData,
@@ -156,9 +158,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
         { label: 'Cred', value: 10 },
       ],
       isRecruiter: false,
+      isEditable: true, // User created profiles should be editable
     };
     await setDoc(doc(db, "profiles", newId), newProfile);
-    setProfiles(prev => [newProfile, ...prev]);
   };
 
   const sendMessage = async (profileId: string, text: string) => {
@@ -198,7 +200,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   // While loading, we can show a blank screen or a loader
   if (loading || !userProfile) {
-    return <div>Loading mainframe...</div>; // Or a proper loader component
+    return null; // Or a proper loader component
   }
 
   return (

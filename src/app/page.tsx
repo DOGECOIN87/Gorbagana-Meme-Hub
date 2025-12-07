@@ -6,10 +6,14 @@ import { HeartCrack, Swords } from "lucide-react";
 import { SplashScreen } from "@/components/layout/SplashScreen";
 
 export default function Home() {
-  const { profiles, swipes, handleSwipe } = useAppContext();
+  const { profiles, swipes, handleSwipe, userProfile } = useAppContext();
+
+  if (!userProfile) {
+    return null; // Or a loading indicator
+  }
 
   const swipedProfileIds = new Set(Object.keys(swipes));
-  const profilesToSwipe = profiles.filter(p => !swipedProfileIds.has(p.id) && p.id !== "user-profile-01");
+  const profilesToSwipe = profiles.filter(p => !swipedProfileIds.has(p.id) && p.id !== userProfile.id);
 
   return (
     <>
