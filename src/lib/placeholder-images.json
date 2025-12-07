@@ -137,6 +137,12 @@
       "description": "GigaChad meme photo",
       "imageUrl": "https://storage.googleapis.com/aai-web-samples/gigachad.jpg",
       "imageHint": "man smiling"
+    },
+    {
+      "id": "user-22",
+      "description": "LOOKSMAX app logo",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/looksmax-logo.png",
+      "imageHint": "app logo"
     }
   ]
 }

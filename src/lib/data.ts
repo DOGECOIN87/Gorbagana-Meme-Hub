@@ -27,6 +27,22 @@ export const initialProfiles: Profile[] = [
     isEditable: true,
   },
   {
+    id: 'user-22',
+    name: 'LOOKSMAXX',
+    age: 21,
+    bio: `"Looksmaxxing" is a social media term for the controversial practice of intentionally trying to maximize one's physical attractiveness through various techniques. Originating in online forums, it has gained popularity on platforms like TikTok and Instagram, primarily among young men, focusing heavily on perceived facial structure, physique, and grooming.`,
+    image: getImage('user-22').url,
+    dataAiHint: getImage('user-22').hint,
+    stats: [
+      { label: 'Community', value: 'Global' },
+      { label: 'Focus', value: 'Attractiveness' },
+      { label: 'Primary Platform', value: 'TikTok' }
+    ],
+    isRecruiter: false,
+    isEditable: false,
+    isVIP: true,
+  },
+  {
     id: 'user-21',
     name: 'GIGACHAD',
     age: 55,

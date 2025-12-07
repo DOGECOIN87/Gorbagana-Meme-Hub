@@ -160,6 +160,33 @@ export default function ProfilePage() {
                 </CardContent>
               </Card>
             )}
+            
+            {currentProfile.id === 'user-22' && (
+              <Card className="mt-8">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <LinkIcon /> Links
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-col gap-2">
+                  <Button asChild className="w-full">
+                    <Link href="https://www.tiktok.com/t/ZTHw8VLSRYUQ5-cKaWy/" target="_blank">
+                      TikTok <ExternalLink className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Button asChild className="w-full" variant="secondary">
+                    <Link href="https://looksmax.org/" target="_blank">
+                      Website <ExternalLink className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Button asChild className="w-full">
+                    <Link href="https://apps.apple.com/us/app/looksmax-ai/id6474518292" target="_blank">
+                      App Store <ExternalLink className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            )}
 
             {currentProfile.id === 'user-15' && (
               <Card className="mt-8">
