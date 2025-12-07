@@ -131,6 +131,12 @@
       "description": "Gor-incinerator coin",
       "imageUrl": "https://storage.googleapis.com/aai-web-samples/gor-incinerator.png",
       "imageHint": "monster coin"
+    },
+    {
+      "id": "user-21",
+      "description": "GigaChad meme photo",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/gigachad.jpg",
+      "imageHint": "man smiling"
     }
   ]
 }

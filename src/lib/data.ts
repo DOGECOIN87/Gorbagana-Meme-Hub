@@ -27,6 +27,23 @@ export const initialProfiles: Profile[] = [
     isEditable: true,
   },
   {
+    id: 'user-21',
+    name: 'GIGACHAD',
+    age: 55,
+    bio: 'A meme based on the model Ernest Khalimov. A hyper-masculine man with a chiseled jawline, often depicted as the pinnacle of male physical perfection.',
+    image: getImage('user-21').url,
+    dataAiHint: getImage('user-21').hint,
+    stats: [
+      { label: 'Jawline', value: 'Chiseled' },
+      { label: 'Height', value: `6'11"` },
+      { label: 'Masculinity', value: 'Hyper' },
+      { label: 'Canthal Tilt', value: 'Perfect' }
+    ],
+    isRecruiter: false,
+    isEditable: false,
+    isVIP: true,
+  },
+  {
     id: 'user-13',
     name: 'Patrick Bateman',
     age: 27,
